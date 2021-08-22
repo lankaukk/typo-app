@@ -5,6 +5,7 @@ class CreateElements < ActiveRecord::Migration[6.1]
       t.string :colors
       t.string :placements
       t.string :font_family
+      t.integer :composition_id
 
       t.timestamps
     end

@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_174753) do
     t.string "colors"
     t.string "placements"
     t.string "font_family"
+    t.integer "composition_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

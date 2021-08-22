@@ -1,3 +1,3 @@
 class Composition < ApplicationRecord
-    has_many :element
+    has_many :elements
 end

@@ -22,11 +22,10 @@ function getElements() {
                 <h3>${elements.attributes.font_family}</h3>
                 <p>Created by ${elements.attributes.composition.artist}</p>
                 <p>On ${elements.attributes.composition.created_at}</p>
-                <button data-id=${elements.id}>edit</button>
             </div>
             <br><br>`;
 
-            document.body.innerHTML += elementsMarkup
+            document.querySelector('#gallery').innerHTML += elementsMarkup
         })
     })
 }

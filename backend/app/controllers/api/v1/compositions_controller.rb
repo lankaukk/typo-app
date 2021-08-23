@@ -2,21 +2,21 @@ class Api::V1::CompositionsController < ApplicationController
 
     def index
         compositions = Composition.all
-        render json: compositions
+        render json: CompositiionSerializer.new(compositions)
     end
 
-    def create 
-        composition = Composition.new(composition_params)
-    end
+    # def create 
+    #     composition = Composition.new(composition_params)
+    # end
 
-    def show 
+    # def show 
 
-    end
+    # end
 
-    private 
+    # private 
 
-    def composition_params
-        params.require(:composition).permit(:artist, :created_at)
-    end
+    # def composition_params
+    #     params.require(:composition).permit(:artist, :created_at)
+    # end
 
 end

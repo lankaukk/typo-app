@@ -1,4 +1,4 @@
-class Api::V1::ElementsController < ApplicationController
+class Api::V1::ArtistsController < ApplicationController
 
     def index 
 

@@ -8,22 +8,27 @@
 
     <script type="text/javascript" src="index.js"></script>
     <link href="style.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </head> 
 <body>
     
     <div id="gallery">
         <center><h1 id="logo">TYPO!</h1></center><br>
-
+        <center><h3>Gallery</h3></center>
+        <br>
     </div>
 
     <div id="canvas">
-        <div id="char1"> </div>
-        <div id="char2"> </div>
-        <div id="char3"> </div>
-        <div id="char4"> </div>
-        <div id="char5"> </div>
-        <div id="char6"> </div>
-        <div id="char7"> </div>
+        <div id="char1" class="draggable"> </div>
+        <div id="char2" class="draggable"> </div>
+        <div id="char3" class="draggable"> </div>
+        <div id="char4" class="draggable"> </div>
+        <div id="char5" class="draggable"> </div>
+        <div id="char6" class="draggable"> </div>
+        <div id="char7" class="draggable"> </div>
     </div>
 
     <div id="elements-panel">
@@ -52,8 +57,6 @@
                     minlength="3" maxlength="30" size="10" placeholder="Artist's name">
             </form>
         </div>
-
-        <br>
 
         <button class="button" id="save-button" onclick="saveComposition()">Save</button>
 

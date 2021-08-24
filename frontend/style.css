@@ -94,7 +94,7 @@ body {
     z-index: 100;
 }
 
-#characters {
+.characters, #characters {
     letter-spacing: 6pt;
 }
 
@@ -103,8 +103,6 @@ body {
     width: 100%;
     
     font-family: Helvetica;
-    font-style: normal;
-    font-weight: normal;
     font-size: 20px;
     line-height: 24px;
     text-align: center;
@@ -122,10 +120,14 @@ body {
 
 input {
     font-family: cursive;
+    text-align: center;
     width: 60%;
-    padding: 12px 20px;
+    
+    padding: 5px 10px;
     margin: 8px 0;
     margin: .8rem 0;
+    position: relative;
+    bottom: 20px;
 }
 
 #date {
@@ -133,6 +135,63 @@ input {
 }
 
 #char1, #char2, #char3, #char4, #char5, #char6, #char7 {
-    display: inline-block;
+    display : inline;
+    position: absolute;
     width: auto;
+}
+
+#char1, #char2 {
+    font-size: 500pt;
+}
+
+#char3, #char4, #char5 {
+    font-size: 250pt;
+}
+
+#char5, #char6 {
+    font-size: 175pt;
+}
+
+#char1 {
+    left: 0;
+    top: 0;
+}
+
+#char2 {
+    left: 200px;
+    top: 10px;
+}
+
+#char3 {
+    left: 300px;
+    top: -40px;
+}
+
+#char4 {
+    left: 400px;
+    top: 40px;
+}
+
+#char5 {
+    left: 450px;
+    top: 350px;
+}
+
+#char6 {
+    left: 350px;
+    top: 260px;
+}
+
+#char7 {
+    left: 400px;
+    top: 310px;
+}
+
+.gallery-items {
+    line-height: 25pt;
+    text-align: center;
+}
+
+.gallery-items:hover {
+    color: red;
 }

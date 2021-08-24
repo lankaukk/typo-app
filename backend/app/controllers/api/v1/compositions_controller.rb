@@ -8,7 +8,11 @@ class Api::V1::CompositionsController < ApplicationController
     def create 
         composition = Composition.new(composition_params)
 
+        artist  = Artist.find_or_create_by(name: composition_params[:artist_name] )
         #find or create artist method
+
+        #composition.artist = artist
+        #composition.artist_id = artist.id
 
         if composition.save
             render json: CompositionSerializer.new(composition), status: :accepted

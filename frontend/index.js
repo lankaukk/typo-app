@@ -1,31 +1,26 @@
-const endPoint = "http://localhost:3000/api/v1/elements"
+const endPoint = "http://localhost:3000/api/v1/compositions"
 
 document.addEventListener('DOMContentLoaded', () => {
-    getElements()
+    getCompositions()
     
 })
 
-function getElements() {
+function getCompositions() {
     fetch(endPoint)
     .then(response => response.json())
-    .then(elements => {
-        elements.data.forEach(elements => {
+    .then(compositions => {
+        compositions.data.forEach(compositions => {
             // double check how your data is nested in the console so you can successfully access the attributes of each individual object
-            // debugger
-            // let newElements = new Elements(elements, elements.attributes)
             
-            const elementsMarkup = `
-            <div data-id=${elements.id}>
-                <h1>${elements.attributes.characters}<h1>
-                <h3>${elements.attributes.placements}</h3>
-                <h3>${elements.attributes.colors}</h3>
-                <h3>${elements.attributes.font_family}</h3>
-                <p>Created by ${elements.attributes.composition.artist}</p>
-                <p>On ${elements.attributes.composition.created_at}</p>
+            const compositionsMarkup = `
+            <div data-id=${compositions.id} class="gallery-items">
+                <h1 class="characters">${compositions.attributes.characters}</h1>
+                <h4>Created by ${compositions.attributes.artist.name}</h4>
+                <h4>${compositions.attributes.created_at}</h4>
             </div>
             <br><br>`;
 
-            document.querySelector('#gallery').innerHTML += elementsMarkup
+            document.querySelector('#gallery').innerHTML += compositionsMarkup
         })
     })
 }
@@ -59,18 +54,13 @@ function makeComposition() {
     let color5 = document.getElementById('block5').style.backgroundColor;
     console.log(color5);
 
-    document.getElementById('canvas').style.color = color1;
-
-    // const chars = document.getElementById('canvas').innerText
-    // const charsArray = chars.split('')
-
-    // const char2 = charsArray[2]
-    // char2.style.color = color3;
-
-
-    // console.log(charsArray[2]);
-
-    // placeOnCanvas()
+    document.getElementById('char1').style.color = color1;
+    document.getElementById('char2').style.color = color3;
+    document.getElementById('char3').style.color = color5;
+    document.getElementById('char4').style.color = color2;
+    document.getElementById('char5').style.color = color4;
+    document.getElementById('char6').style.color = color1;
+    document.getElementById('char7').style.color = color3;
 
     makeTodaysDate()
 
@@ -97,7 +87,6 @@ function makeCharacters() {
         randomCharacter = possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)]
         characterArray.push(randomCharacter)
         document.querySelector("#char" + i).innerHTML = randomCharacter
-        // debugger
     }
         
 
@@ -107,11 +96,6 @@ function makeCharacters() {
 
     // puts characters on side panel
     document.getElementById('characters').insertAdjacentHTML('beforeend', characters);
-
-    // place characters on canvas
-    // document.getElementById('canvas').insertAdjacentHTML('beforeend', characters);
-
-    // document.getElementById('char1').innerText = characterString[1]
     
 }
 
@@ -127,8 +111,6 @@ function makeTypeface() {
     document.getElementById('canvas').style.fontFamily = typeface;
 }
 
-// function placeOnCanvas() {
-// }
 
 function makeTodaysDate() {
     const d = new Date();

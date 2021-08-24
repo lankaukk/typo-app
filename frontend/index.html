@@ -22,7 +22,8 @@
     </div>
 
     <div id="elements-panel">
-        <button class="create-button" onclick="makeComposition()">Create!</button>
+        <button class="button" id="create-button" onclick="makeComposition()">Create!</button>
+
         <div id="color-scheme">
             <div class="color-block"> </div>
             <div class="color-block"> </div>
@@ -30,6 +31,26 @@
             <div class="color-block"> </div>
             <div class="color-block"> </div>
         </div>
+
+        <div id="characters">
+        </div>
+
+        <div id="typeface">
+        </div>
+
+        <div id="date">
+        </div>
+
+        <div id="artist">
+            <input type="text"  name="artist" required
+                minlength="3" maxlength="30" size="10" placeholder="Artist's name">
+        </div>
+
+        <br>
+
+        <button class="button" id="save-button" onclick="saveComposition()">Save</button>
+
     </div>
+
 </body>
 </html>

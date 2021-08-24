@@ -31,14 +31,72 @@ function getElements() {
 }
 
 function makeComposition() {
-    var x = Math.floor(Math.random() * 256);
-    var y = Math.floor(Math.random() * 256);
-    var z = Math.floor(Math.random() * 256);
-    var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+    document.getElementById('characters').innerHTML = "";
+    document.getElementById('save-button').style.display = "block";
+    document.getElementById('artist').style.display = "block";
 
-    document.body.style.background = bgColor;
+    makeColors()
+    makeCharacters()
+    makeTypeface()
 
-    // document.getElementById('#elements-panel').innerHTML = bgColor;
-    console.log(bgColor);
+    makeTodaysDate()
+
+}
+
+function makeColors() {
+    const blocks = document.getElementsByClassName('color-block');
+    // console.log(blocks);
+
+    // document.body.style.background = bgColor;
+
+    for (var i=0; i < blocks.length; i++) {
+        var x = Math.floor(Math.random() * 256);
+        var y = Math.floor(Math.random() * 256);
+        var z = Math.floor(Math.random() * 256);
+        var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+
+        blocks[i].style.backgroundColor = bgColor;
+    }
+}
+
+function makeCharacters() {
     
+
+    const possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321!@#$%^&*()+=?;:{}<>,."
+
+    const characterString = []
+
+    for (var i=0; i < 7; i++) {
+        randomCharacter = possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)]
+        characterString.push(randomCharacter)
+    }
+
+    characters = characterString.join(" ");
+    console.log(characters);
+
+    
+    document.getElementById('characters').insertAdjacentHTML('beforeend', characters);
+    
+}
+
+function makeTypeface() {
+
+    const possibleTypefaces = ['Helvetica', 'Courier','Courier Neue', 'Times', 'Times New Roman', 'Impact', 'Roboto', 'Arial', 'Georgia', 'Cambria']
+    const randomChoice = Math.floor(Math.random() * possibleTypefaces.length);
+    const typeface = possibleTypefaces[randomChoice];
+
+    document.getElementById('typeface').innerHTML = typeface;
+    document.getElementById('typeface').style.fontFamily = typeface;
+}
+
+function makeTodaysDate() {
+    const d = new Date();
+
+    var month = d.toLocaleString('en-US', { month: 'long' }) //months from 1-12
+    var day = d.getUTCDate();
+    var year = d.getUTCFullYear();
+
+    newdate = month + " " + day + ", " + year ;
+
+    document.getElementById('date').innerHTML = newdate;
 }

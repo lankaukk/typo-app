@@ -1,4 +1,5 @@
 class CompositiionSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :artist, :created_at
+  attributes :characters, :colors, :placements, :font_family, :artist_id, :artist
+  belongs_to :artist
 end

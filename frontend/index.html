@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typo</title>
+    <title>TYPO!</title>
 
     <script type="text/javascript" src="index.js"></script>
     <link href="style.css" rel="stylesheet">
@@ -12,24 +12,29 @@
 <body>
     
     <div id="gallery">
-        <center><h1 id="logo">TYPO</h1></center><br>
+        <center><h1 id="logo">TYPO!</h1></center><br>
 
     </div>
 
     <div id="canvas">
-
-
+        <div id="char1"> </div>
+        <div id="char2"> </div>
+        <div id="char3"> </div>
+        <div id="char4"> </div>
+        <div id="char5"> </div>
+        <div id="char6"> </div>
+        <div id="char7"> </div>
     </div>
 
     <div id="elements-panel">
-        <button class="button" id="create-button" onclick="makeComposition()">Create!</button>
+        <button class="button" id="create-button" onclick="makeComposition()">Create</button>
 
         <div id="color-scheme">
-            <div class="color-block"> </div>
-            <div class="color-block"> </div>
-            <div class="color-block"> </div>
-            <div class="color-block"> </div>
-            <div class="color-block"> </div>
+            <div class="color-block" id="block1"> </div>
+            <div class="color-block" id="block2"> </div>
+            <div class="color-block" id="block3"> </div>
+            <div class="color-block" id="block4"> </div>
+            <div class="color-block" id="block5"> </div>
         </div>
 
         <div id="characters">
@@ -42,8 +47,10 @@
         </div>
 
         <div id="artist">
-            <input type="text"  name="artist" required
-                minlength="3" maxlength="30" size="10" placeholder="Artist's name">
+            <form>
+                <input type="text"  name="artist" required
+                    minlength="3" maxlength="30" size="10" placeholder="Artist's name">
+            </form>
         </div>
 
         <br>

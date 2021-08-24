@@ -15,18 +15,18 @@ ActiveRecord::Schema.define(version: 2021_08_22_174753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "compositions", force: :cascade do |t|
-    t.string "artist"
+  create_table "artists", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "elements", force: :cascade do |t|
+  create_table "compositions", force: :cascade do |t|
     t.string "characters"
     t.string "colors"
     t.string "placements"
     t.string "font_family"
-    t.integer "composition_id"
+    t.integer "artist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

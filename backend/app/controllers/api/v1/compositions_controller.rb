@@ -5,18 +5,26 @@ class Api::V1::CompositionsController < ApplicationController
         render json: CompositiionSerializer.new(compositions)
     end
 
-    # def create 
-    #     composition = Composition.new(composition_params)
-    # end
+    def create 
+        composition = Composition.new(composition_params)
 
-    # def show 
+        #find or create artist method
 
-    # end
+        if composition.save
+            render json: CompositionSerializer.new(composition), status: :accepted
+          else
+            render json: {errors: composition.errors.full_messages}, status: :unprocessible_entity
+          end
+    end
 
-    # private 
+    def show 
 
-    # def composition_params
-    #     params.require(:composition).permit(:artist, :created_at)
-    # end
+    end
+
+    private 
+
+    def composition_params
+        params.require(:composition).permit(:characters, :colors, :placements, :font_family, :artist_id)
+    end
 
 end

@@ -32,6 +32,15 @@ function getElements() {
 
 function makeComposition() {
     document.getElementById('characters').innerHTML = "";
+
+    document.getElementById('char1').innerHTML = "";
+    document.getElementById('char2').innerHTML = "";
+    document.getElementById('char3').innerHTML = "";
+    document.getElementById('char4').innerHTML = "";
+    document.getElementById('char5').innerHTML = "";
+    document.getElementById('char6').innerHTML = "";
+    document.getElementById('char7').innerHTML = "";
+
     document.getElementById('save-button').style.display = "block";
     document.getElementById('artist').style.display = "block";
 
@@ -39,15 +48,36 @@ function makeComposition() {
     makeCharacters()
     makeTypeface()
 
+    let color1 = document.getElementById('block1').style.backgroundColor;
+    console.log(color1);
+    let color2 = document.getElementById('block2').style.backgroundColor;
+    console.log(color2);
+    let color3 = document.getElementById('block3').style.backgroundColor;
+    console.log(color3);
+    let color4 = document.getElementById('block4').style.backgroundColor;
+    console.log(color4);
+    let color5 = document.getElementById('block5').style.backgroundColor;
+    console.log(color5);
+
+    document.getElementById('canvas').style.color = color1;
+
+    // const chars = document.getElementById('canvas').innerText
+    // const charsArray = chars.split('')
+
+    // const char2 = charsArray[2]
+    // char2.style.color = color3;
+
+
+    // console.log(charsArray[2]);
+
+    // placeOnCanvas()
+
     makeTodaysDate()
 
 }
 
 function makeColors() {
     const blocks = document.getElementsByClassName('color-block');
-    // console.log(blocks);
-
-    // document.body.style.background = bgColor;
 
     for (var i=0; i < blocks.length; i++) {
         var x = Math.floor(Math.random() * 256);
@@ -60,34 +90,45 @@ function makeColors() {
 }
 
 function makeCharacters() {
-    
-
     const possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321!@#$%^&*()+=?;:{}<>,."
 
-    const characterString = []
-
-    for (var i=0; i < 7; i++) {
+    const characterArray = []
+    for (var i=1; i < 8; i++) {
         randomCharacter = possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)]
-        characterString.push(randomCharacter)
+        characterArray.push(randomCharacter)
+        document.querySelector("#char" + i).innerHTML = randomCharacter
+        // debugger
     }
+        
 
-    characters = characterString.join(" ");
+    console.log(characterArray);
+    characters = characterArray.join(" ");
     console.log(characters);
 
-    
+    // puts characters on side panel
     document.getElementById('characters').insertAdjacentHTML('beforeend', characters);
+
+    // place characters on canvas
+    // document.getElementById('canvas').insertAdjacentHTML('beforeend', characters);
+
+    // document.getElementById('char1').innerText = characterString[1]
     
 }
 
 function makeTypeface() {
-
     const possibleTypefaces = ['Helvetica', 'Courier','Courier Neue', 'Times', 'Times New Roman', 'Impact', 'Roboto', 'Arial', 'Georgia', 'Cambria']
     const randomChoice = Math.floor(Math.random() * possibleTypefaces.length);
     const typeface = possibleTypefaces[randomChoice];
 
     document.getElementById('typeface').innerHTML = typeface;
     document.getElementById('typeface').style.fontFamily = typeface;
+
+    // change typeface of characters on canvas
+    document.getElementById('canvas').style.fontFamily = typeface;
 }
+
+// function placeOnCanvas() {
+// }
 
 function makeTodaysDate() {
     const d = new Date();

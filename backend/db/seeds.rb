@@ -11,8 +11,8 @@
 
 Composition.create(characters: "BJ}OzWw", colors: "rgb(221, 115, 65), rgb(135, 236, 80), rgb(120, 159, 102), rgb(241, 76, 20), rgb(150, 190, 212)",placements: [{left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}], font_family: "Arial", artist_id: 1)
 
+Composition.create(characters: "wLyhwQ+", colors: "rgb(221, 115, 65), rgb(135, 236, 80), rgb(120, 159, 102), rgb(241, 76, 20), rgb(150, 190, 212)",placements: [{left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}, {left: "20px", top: "30px"}], font_family: "Arial", artist_id: 2)
 
-# Composition.create(characters: "", colors: "", placements: "", font_family: "", artist_id: 1)
 
 
 Artist.create(name: "McKayla")

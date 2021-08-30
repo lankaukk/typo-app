@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function createFormHandler(e) {
     e.preventDefault()
+   
     const artistInput = document.querySelector("#artist").value
     const date = document.querySelector('#date').innerText
     const typeface = document.querySelector('#typeface').innerText
@@ -20,13 +21,14 @@ function createFormHandler(e) {
     const color3 = document.querySelector('#block3').style.backgroundColor
     const color4 = document.querySelector('#block4').style.backgroundColor
     const color5 = document.querySelector('#block5').style.backgroundColor
-    const colors = [color1, color2, color3, color4, color5]
+    const colors = color1 + ", " + color2 + ", " + color3 + ", " + color4 + ", " + color5
 
-    const composition = { artist: artistInput,
+    const composition = { 
+        characters: characters,
         colors: colors,
-        date: date,
-        typeface: typeface,
-        characters: characters
+        font_family: typeface,
+        artist_name: artistInput,
+        created_at: date
     }
 
     postFetch(composition);
@@ -37,11 +39,10 @@ function postFetch(composition) {
     
     fetch(endPoint, {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-          },
-        body: JSON.stringify(composition),
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({composition: composition}),
     })
+
     .then(response => response.json()) 
     .then(composition => {
         console.log("2", composition);

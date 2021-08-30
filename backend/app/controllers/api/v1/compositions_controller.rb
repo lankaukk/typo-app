@@ -2,17 +2,24 @@ class Api::V1::CompositionsController < ApplicationController
 
     def index
         compositions = Composition.all
-        render json: CompositiionSerializer.new(compositions)
+        render json: CompositionSerializer.new(compositions)
     end
 
     def create 
-        composition = Composition.new(composition_params)
+        composition = Composition.new({ 
+            characters: composition_params[:characters],
+            colors: composition_params[:colors],
+            font_family: composition_params[:typeface],
+            created_at: composition_params[:date]
+        })
 
-        artist  = Artist.find_or_create_by(name: composition_params[:artist_name] )
         #find or create artist method
+        artist  = Artist.find_or_create_by(name: composition_params[:artist_name] )
+        
+        composition.artist = artist
+        composition.artist_id = artist.id
 
-        #composition.artist = artist
-        #composition.artist_id = artist.id
+        # byebug
 
         if composition.save
             render json: CompositionSerializer.new(composition), status: :accepted
@@ -28,7 +35,7 @@ class Api::V1::CompositionsController < ApplicationController
     private 
 
     def composition_params
-        params.require(:composition).permit(:characters, :colors, :placements, :font_family, :artist_id)
+        params.require(:composition).permit(:characters, :colors, :placements, :font_family, :artist_name, :created_at)
     end
 
 end

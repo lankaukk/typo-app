@@ -45,7 +45,17 @@ function postFetch(composition) {
 
     .then(response => response.json()) 
     .then(composition => {
-        console.log("2", composition);
+        const compositionData = composition.data.attributes
+        const compositionsMarkup = `
+            <div data-id=${compositionData.id} class="gallery-items">
+                <h1 class="characters">${compositionData.characters}</h1>
+                <h4>Created by ${compositionData.artist.name}</h4>
+                <h4>${compositionData.created_at}</h4>
+            </div>
+            <br><br>`;
+
+            document.querySelector('#gallery').insertAdjacentHTML("afterbegin", compositionsMarkup);
+            
         
     })
 }

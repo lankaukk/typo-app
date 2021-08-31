@@ -45,16 +45,23 @@ function postFetch(composition) {
 
     .then(response => response.json()) 
     .then(composition => {
-        const compositionData = composition.data.attributes
-        const compositionsMarkup = `
-            <div data-id=${compositionData.id} class="gallery-items">
-                <h1 class="characters">${compositionData.characters}</h1>
-                <h4>Created by ${compositionData.artist.name}</h4>
-                <h4>${compositionData.created_at}</h4>
-            </div>
-            <br><br>`;
+        const compositionData = composition.data
 
-            document.querySelector('#gallery').insertAdjacentHTML("afterbegin", compositionsMarkup);
+        let newComposition = new Composition(compositionData, compositionData.attributes)
+
+            document.querySelector('#gallery').innerHTML += newComposition.renderCompositionCard();  
+
+        // const compositionsMarkup = `
+        //     <div data-id=${compositionData.attributes.id} class="gallery-items">
+        //         <h1 class="characters">${compositionData.attributes.characters}</h1>
+        //         <h4>Created by ${compositionData.attributes.artist.name}</h4>
+        //         <h4>${compositionData.attributes.created_at}</h4>
+        //     </div>
+        //     <br><br>`;
+
+        //     document.querySelector('#gallery').innerHTML += compositionsMarkup
+            // adds to start of list, but on reload goes to bottom 
+            // document.querySelector('#gallery').insertAdjacentHTML("afterbegin", compositionsMarkup);
             
         
     })
@@ -64,21 +71,18 @@ function getCompositions() {
     fetch(endPoint)
     .then(response => response.json())
     .then(compositions => {
-        compositions.data.forEach(compositions => {
+        compositions.data.forEach(composition => {
             // double check how your data is nested in the console so you can successfully access the attributes of each individual object
-            
-            const compositionsMarkup = `
-            <div data-id=${compositions.id} class="gallery-items">
-                <h1 class="characters">${compositions.attributes.characters}</h1>
-                <h4>Created by ${compositions.attributes.artist.name}</h4>
-                <h4>${compositions.attributes.created_at}</h4>
-            </div>
-            <br><br>`;
 
-            document.querySelector('#gallery').innerHTML += compositionsMarkup
+            //debugger 
+            let newComposition = new Composition(composition, composition.attributes)
+
+            document.querySelector('#gallery').innerHTML += newComposition.renderCompositionCard();  
         })
     })
 }
+
+
 
 function makeComposition() {
     document.getElementById('characters').innerHTML = "";
@@ -146,7 +150,7 @@ function makeCharacters() {
         
 
     console.log(characterArray);
-    characters = characterArray.join(" ");
+    characters = characterArray.join("");
     console.log(characters);
 
     // puts characters on side panel

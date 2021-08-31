@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TYPO!</title>
+    <title>TYPO</title>
 
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="composition.js"></script>
     <link href="style.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Freckle+Face&family=Grenze+Gotisch&family=Limelight&family=Macondo+Swash+Caps&family=Modak&family=Montserrat:wght@900&family=Nosifer&family=Palette+Mosaic&family=Plaster&family=Rammetto+One&family=Slackey&family=Source+Code+Pro:wght@900&display=swap" rel="stylesheet">
+
 
     <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
@@ -17,7 +22,7 @@
 <body>
     
     <div id="left-side">
-        <h1 id="logo">TYPO!</h1>
+        <h1 id="logo">TYPO</h1>
         <br>
         <h3>Gallery</h3>
         <br>
@@ -25,18 +30,19 @@
         <div id="gallery">
             
             
-            <br>
+            
         </div>
+        <br>
     </div>
 
     <div id="canvas">
-        <div id="char1" class="draggable"> </div>
-        <div id="char2" class="draggable"> </div>
-        <div id="char3" class="draggable"> </div>
-        <div id="char4" class="draggable"> </div>
-        <div id="char5" class="draggable"> </div>
-        <div id="char6" class="draggable"> </div>
-        <div id="char7" class="draggable"> </div>
+        <div id="char1" > </div>
+        <div id="char2" > </div>
+        <div id="char3" > </div>
+        <div id="char4" > </div>
+        <div id="char5" > </div>
+        <div id="char6" > </div>
+        <div id="char7" > </div>
     </div>
 
     <div id="elements-panel">
@@ -62,17 +68,23 @@
             <div id="typeface">
             </div>
 
-            <br>
+            
 
-            <div id="date">
-            </div>
-
-            <br>
+            <br><br>
 
         <!-- <div id="artist"> -->
             
             <input type="text" id="artist" name="artist" required
                 minlength="3" maxlength="30" size="10" placeholder="Artist's name">
+
+            <div id="artist-signature">
+            </div>
+
+            <div id="date">
+            </div>
+
+            <br>
+            <br>
                 
             <button type="submit" class="button" id="save-button">Save</button>
  

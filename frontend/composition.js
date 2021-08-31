@@ -1,6 +1,7 @@
 class Composition {
 
     constructor(composition, compositionAttributes) {
+        
         this.id = composition.id
         this.characters = compositionAttributes.characters
         this.colors = compositionAttributes.colors
@@ -15,8 +16,9 @@ class Composition {
         return `
             <div data-id=${this.id} class="gallery-items">
                 <h1 class="characters">${this.characters}</h1>
-                <h4>Created by ${this.artist_name}</h4>
-                <h4>${this.date}</h4>
+                <h5 class="artist">Created by ${this.artist_name}</h5>
+                <h5>in ${this.font_family}</h5>
+                <h5>on ${this.date}</h5>
             </div>
             <br><br>`;   
     }

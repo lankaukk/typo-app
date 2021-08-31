@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     getCompositions()
     
     const saveForm = document.getElementById('save-form')
-    console.log(saveForm)
     saveForm.addEventListener("submit", (e) => createFormHandler(e))
-    // saveForm.addEventListener('submit', (e) => console.log(e))
+  
 })
 
 function createFormHandler(e) {
@@ -26,10 +25,12 @@ function createFormHandler(e) {
     const composition = { 
         characters: characters,
         colors: colors,
-        font_family: typeface,
         artist_name: artistInput,
+        font_family: typeface,
         created_at: date
     }
+
+    // debugger
 
     postFetch(composition);
 }
@@ -40,30 +41,17 @@ function postFetch(composition) {
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({composition: composition}),
+        body: JSON.stringify({composition: composition})
     })
 
     .then(response => response.json()) 
     .then(composition => {
+
         const compositionData = composition.data
 
         let newComposition = new Composition(compositionData, compositionData.attributes)
 
-            document.querySelector('#gallery').innerHTML += newComposition.renderCompositionCard();  
-
-        // const compositionsMarkup = `
-        //     <div data-id=${compositionData.attributes.id} class="gallery-items">
-        //         <h1 class="characters">${compositionData.attributes.characters}</h1>
-        //         <h4>Created by ${compositionData.attributes.artist.name}</h4>
-        //         <h4>${compositionData.attributes.created_at}</h4>
-        //     </div>
-        //     <br><br>`;
-
-        //     document.querySelector('#gallery').innerHTML += compositionsMarkup
-            // adds to start of list, but on reload goes to bottom 
-            // document.querySelector('#gallery').insertAdjacentHTML("afterbegin", compositionsMarkup);
-            
-        
+        document.querySelector('#gallery').innerHTML += newComposition.renderCompositionCard();  
     })
 }
 
@@ -73,15 +61,90 @@ function getCompositions() {
     .then(compositions => {
         compositions.data.forEach(composition => {
             // double check how your data is nested in the console so you can successfully access the attributes of each individual object
-
-            //debugger 
             let newComposition = new Composition(composition, composition.attributes)
 
             document.querySelector('#gallery').innerHTML += newComposition.renderCompositionCard();  
         })
+
+    const galleryItems = document.getElementsByClassName('gallery-items');
+    const galleryItemsArray = Array.prototype.slice.call(galleryItems);
+
+    galleryItemsArray.forEach(item => {
+            
+        item.addEventListener("click", () => {
+            document.getElementById('char1').innerHTML = "";
+            document.getElementById('char2').innerHTML = "";
+            document.getElementById('char3').innerHTML = "";
+            document.getElementById('char4').innerHTML = "";
+            document.getElementById('char5').innerHTML = "";
+            document.getElementById('char6').innerHTML = "";
+            document.getElementById('char7').innerHTML = "";
+            document.getElementById('save-button').style.display = "none";
+            document.getElementById('artist').style.display = "none";
+
+            let itemID = item.dataset.id
+            showCompositions(itemID)
+            })
+        })    
     })
 }
 
+function showCompositions(itemID) {
+    fetch(endPoint + "/" + itemID)
+    .then(response => response.json())
+    .then(item => {
+        const itemData = item.data.attributes
+        const artist_name = itemData.artist.name
+        const date = itemData.created_at
+        const charactersString = itemData.characters
+        const typeface = itemData.font_family
+
+        const colorString = itemData.colors
+        const wavyString = colorString.replaceAll(/\),/g,")~")
+        const bestString = wavyString.split("~")
+
+        const char1 = itemData.characters[0]
+        const char2 = itemData.characters[1]
+        const char3 = itemData.characters[2]
+        const char4 = itemData.characters[3]
+        const char5 = itemData.characters[4]
+        const char6 = itemData.characters[5]
+        const char7 = itemData.characters[6]
+        document.getElementById('char1').innerHTML = char1;
+        document.getElementById('char2').innerHTML = char2;
+        document.getElementById('char3').innerHTML = char3;
+        document.getElementById('char4').innerHTML = char4;
+        document.getElementById('char5').innerHTML = char5;
+        document.getElementById('char6').innerHTML = char6;
+        document.getElementById('char7').innerHTML = char7;
+
+        const color1 = bestString[0]
+        const color2 = bestString[1]
+        const color3 = bestString[2]
+        const color4 = bestString[3]
+        const color5 = bestString[4]
+
+        document.getElementById('char1').style.color = color1;
+        document.getElementById('char2').style.color = color3;
+        document.getElementById('char3').style.color = color5;
+        document.getElementById('char4').style.color = color2;
+        document.getElementById('char5').style.color = color4;
+        document.getElementById('char6').style.color = color1;
+        document.getElementById('char7').style.color = color3;
+
+        document.getElementById('canvas').style.fontFamily = typeface;
+
+        document.getElementById('characters').innerHTML = charactersString;
+        document.getElementById('date').innerHTML = "On " + date;
+        document.getElementById('artist-signature').innerHTML = "Created by " + artist_name;
+        
+
+        console.log(itemData)
+        console.log(itemData.typeface)
+
+    })
+    
+}
 
 
 function makeComposition() {
@@ -103,15 +166,10 @@ function makeComposition() {
     makeTypeface()
 
     let color1 = document.getElementById('block1').style.backgroundColor;
-    console.log(color1);
     let color2 = document.getElementById('block2').style.backgroundColor;
-    console.log(color2);
     let color3 = document.getElementById('block3').style.backgroundColor;
-    console.log(color3);
     let color4 = document.getElementById('block4').style.backgroundColor;
-    console.log(color4);
     let color5 = document.getElementById('block5').style.backgroundColor;
-    console.log(color5);
 
     document.getElementById('char1').style.color = color1;
     document.getElementById('char2').style.color = color3;
@@ -147,11 +205,8 @@ function makeCharacters() {
         characterArray.push(randomCharacter)
         document.querySelector("#char" + i).innerHTML = randomCharacter
     }
-        
-
-    console.log(characterArray);
+    
     characters = characterArray.join("");
-    console.log(characters);
 
     // puts characters on side panel
     document.getElementById('characters').insertAdjacentHTML('beforeend', characters);
@@ -159,7 +214,7 @@ function makeCharacters() {
 }
 
 function makeTypeface() {
-    const possibleTypefaces = ['Helvetica', 'Courier','Courier Neue', 'Times', 'Times New Roman', 'Impact', 'Roboto', 'Arial', 'Georgia', 'Cambria']
+    const possibleTypefaces = ['Helvetica', 'Courier','Courier Neue', 'Times', 'Times New Roman', 'Impact', 'Roboto', 'Arial', 'Georgia', 'Cambria', 'Palette Mosaic', 'Freckle Face', 'Grenze Gotisch', 'Limelight', 'Macondo Swash Caps', 'Modak', 'Nosifer', 'Plaster', 'Rammetto One', 'Slackey', 'Montserrat', 'Source Code Pro']
     const randomChoice = Math.floor(Math.random() * possibleTypefaces.length);
     const typeface = possibleTypefaces[randomChoice];
 

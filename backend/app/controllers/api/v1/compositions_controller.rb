@@ -9,7 +9,7 @@ class Api::V1::CompositionsController < ApplicationController
         composition = Composition.new({ 
             characters: composition_params[:characters],
             colors: composition_params[:colors],
-            font_family: composition_params[:typeface],
+            font_family: composition_params[:font_family],
             created_at: composition_params[:date]
         })
 
@@ -29,7 +29,8 @@ class Api::V1::CompositionsController < ApplicationController
     end
 
     def show 
-
+        composition = Composition.find_by(id: params[:id] )
+        render json: CompositionSerializer.new(composition)
     end
 
     private 

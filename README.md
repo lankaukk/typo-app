@@ -1,6 +1,6 @@
 # TYPO
 
-Welcome to the Typo App! This is a Single Page Application(SPA) for generating your own digital typographic compositions. Users may also browse the gallery to view others' compositons. The frontend is built with HTML, CSS, and JavaScript, and it communicates with a backend API that is built with Ruby and Rails.
+Welcome to the Typo App! This is a Single Page Application(SPA) for generating your own digital typographic compositions. Users may also browse the gallery to view compositons created by others. The frontend is built with HTML, CSS, and JavaScript, and it communicates with a backend API that is built with Ruby and Rails.
 
 ## Ruby Version
 

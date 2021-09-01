@@ -1,9 +1,9 @@
 TODO
 
-[ ] MVP?
-    [ ] View a previously posted composition
-    [ ] showFetch
-[ ] Not saving the font-family?
+[x] MVP?
+    [x] View a previously posted composition
+    [x] showFetch
+[x] Not saving the font-family?
 [ ] Not saving correct date
 [ ] Sort gallery, newest at top
 

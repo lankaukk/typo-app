@@ -81,6 +81,7 @@ function getCompositions() {
             document.getElementById('char7').innerHTML = "";
             document.getElementById('save-button').style.display = "none";
             document.getElementById('artist').style.display = "none";
+            document.getElementById('color-scheme').style.display = "none";
 
             let itemID = item.dataset.id
             showCompositions(itemID)
@@ -160,6 +161,8 @@ function makeComposition() {
 
     document.getElementById('save-button').style.display = "block";
     document.getElementById('artist').style.display = "block";
+    document.getElementById('color-scheme').style.display = "block";
+    document.getElementById('artist-signature').style.display = "none";
 
     makeColors()
     makeCharacters()

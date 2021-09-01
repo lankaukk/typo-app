@@ -157,45 +157,45 @@ input {
 }
 
 #char1, #char2 {
-    font-size: 500pt;
+    font-size: 600pt;
 }
 
 #char3, #char4, #char5 {
-    font-size: 250pt;
+    font-size: 350pt;
 }
 
 #char5, #char6, #char7 {
-    font-size: 175pt;
+    font-size: 275pt;
 }
 
 #char1 {
-    left: 0;
-    top: 0;
+    left: -80px;
+    top: -100px;
 }
 
 #char2 {
-    left: 200px;
-    top: 10px;
+    left: 100px;
+    top: 0px;
 }
 
 #char3 {
     left: 300px;
-    top: -40px;
+    top: -250px;
 }
 
 #char4 {
-    left: 400px;
+    right: 0px;
     top: 40px;
 }
 
 #char5 {
-    left: 450px;
+    left: 150px;
     top: 350px;
 }
 
 #char6 {
     left: 350px;
-    top: 260px;
+    top: 60px;
 }
 
 #char7 {

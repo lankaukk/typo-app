@@ -33,10 +33,16 @@ body {
     position: fixed;
     overflow: auto;
 
+    display: flex;
+    flex-direction: column-reverse;
+
     height: 70vh;
     width: inherit;
 
     border: 1px solid white;
+    -moz-box-shadow:    inset 0 0 10px #ffffff;
+    -webkit-box-shadow: inset 0 0 10px #ffffff;
+    box-shadow:         inset 0 0 10px #ffffff;
 }
 
 #canvas {
@@ -88,6 +94,14 @@ body {
     text-align: center;
 
     color: #FFFFFF;
+}
+
+.button:hover {background-color: #7D0000}
+
+.button:active {
+  background-color: #7D0000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 #save-button {

@@ -29,9 +29,6 @@ function createFormHandler(e) {
         font_family: typeface,
         created_at: date
     }
-
-    // debugger
-
     postFetch(composition);
 }
 
@@ -64,7 +61,6 @@ function getCompositions() {
     const galleryItemsArray = Array.prototype.slice.call(galleryItems);
 
     galleryItemsArray.forEach(item => {
-            
         item.addEventListener("click", () => {
             document.getElementById('char1').innerHTML = "";
             document.getElementById('char2').innerHTML = "";

@@ -36,21 +36,15 @@ function createFormHandler(e) {
 }
 
 function postFetch(composition) {
-    console.log("1", composition);
-    
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({composition: composition})
     })
-
     .then(response => response.json()) 
     .then(composition => {
-
         const compositionData = composition.data
-
         let newComposition = new Composition(compositionData, compositionData.attributes)
-
         document.querySelector('#gallery').innerHTML += newComposition.renderCompositionCard();  
     })
 }
@@ -81,7 +75,9 @@ function getCompositions() {
             document.getElementById('char7').innerHTML = "";
             document.getElementById('save-button').style.display = "none";
             document.getElementById('artist').style.display = "none";
+            document.getElementById('artist-signature').style.display = "block";
             document.getElementById('color-scheme').style.display = "none";
+            document.getElementById('typeface').style.display = "none";
 
             let itemID = item.dataset.id
             showCompositions(itemID)
@@ -139,14 +135,9 @@ function showCompositions(itemID) {
         document.getElementById('date').innerHTML = "On " + date;
         document.getElementById('artist-signature').innerHTML = "Created by " + artist_name;
         
-
-        console.log(itemData)
-        console.log(itemData.typeface)
-
     })
     
 }
-
 
 function makeComposition() {
     document.getElementById('characters').innerHTML = "";
@@ -200,7 +191,7 @@ function makeColors() {
 }
 
 function makeCharacters() {
-    const possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321!@#$%^&*()+=?;:{}<>,."
+    const possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321!@#$%^&****()+=?;:{}<>,."
 
     const characterArray = []
     for (var i=1; i < 8; i++) {
@@ -227,7 +218,6 @@ function makeTypeface() {
     // change typeface of characters on canvas
     document.getElementById('canvas').style.fontFamily = typeface;
 }
-
 
 function makeTodaysDate() {
     const d = new Date();

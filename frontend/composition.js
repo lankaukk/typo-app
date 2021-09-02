@@ -17,8 +17,7 @@ class Composition {
             <div data-id=${this.id} class="gallery-items">
                 <h1 class="characters">${this.characters}</h1>
                 <h5 class="artist">Created by ${this.artist_name}</h5>
-                <h5>in ${this.font_family}</h5>
-                <h5>on ${this.date}</h5>
+                
             </div>
             <br><br>`;   
     }

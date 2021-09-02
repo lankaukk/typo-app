@@ -26,7 +26,7 @@ body {
 
 #logo {
     font-family: 'Source Code Pro', Helvetica, sans-serif;
-    letter-spacing: 0pt;
+    letter-spacing: 10pt;
     font-size: 60pt;
 }
 
@@ -41,6 +41,9 @@ body {
 
     height: 70vh;
     width: inherit;
+    border-radius: 20px;
+
+    background-color: rgba(77, 76, 76, 0.637);
 
     border: 1px solid white;
     -moz-box-shadow:    inset 0 0 10px #ffffff;
@@ -151,9 +154,9 @@ body {
 }
 
 input {
-    font-family: cursive;
     text-align: center;
     width: 60%;
+    border-radius: 41px;
     
     padding: 5px 10px;
     margin: 8px 0;
@@ -234,3 +237,25 @@ input {
     height: 30px;
     text-align: center;
 }
+
+.highlight {
+    animation: highlight 3s forwards;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+}
+
+@keyframes highlight {
+    0% {border: 1px solid white;
+        -moz-box-shadow:    inset 0 0 10px #ffffff;
+        -webkit-box-shadow: inset 0 0 10px #ffffff;
+        box-shadow:         inset 0 0 10px #ffffff;}
+    50% {
+        border: 2px solid #F48117;
+        -moz-box-shadow:    inset 0 0 10px #F48117;
+        -webkit-box-shadow: inset 0 0 10px #F48117;
+        box-shadow:         inset 0 0 10px #F48117;}
+    100% {border: 1px solid white;
+        -moz-box-shadow:    inset 0 0 10px #ffffff;
+        -webkit-box-shadow: inset 0 0 10px #ffffff;
+        box-shadow:         inset 0 0 10px #ffffff;}
+  }

@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const saveForm = document.getElementById('save-form')
     saveForm.addEventListener("submit", (e) => createFormHandler(e))
-  
 })
 
 function createFormHandler(e) {
@@ -43,7 +42,33 @@ function postFetch(composition) {
         const compositionData = composition.data
         let newComposition = new Composition(compositionData, compositionData.attributes)
         document.querySelector('#gallery').innerHTML += newComposition.renderCompositionCard();  
+
+        const galleryItems = document.getElementsByClassName('gallery-items');
+    const galleryItemsArray = Array.prototype.slice.call(galleryItems);
+
+    galleryItemsArray.forEach(item => {
+        item.addEventListener("click", () => {
+            document.getElementById('char1').innerHTML = "";
+            document.getElementById('char2').innerHTML = "";
+            document.getElementById('char3').innerHTML = "";
+            document.getElementById('char4').innerHTML = "";
+            document.getElementById('char5').innerHTML = "";
+            document.getElementById('char6').innerHTML = "";
+            document.getElementById('char7').innerHTML = "";
+            document.getElementById('save-button').style.display = "none";
+            document.getElementById('artist').style.display = "none";
+            document.getElementById('artist-signature').style.display = "block";
+            document.getElementById('color-scheme').style.display = "none";
+            document.getElementById('typeface').style.display = "none";
+
+            let itemID = item.dataset.id
+            showCompositions(itemID)
+            })
+        }) 
     })
+    
+
+     
 }
 
 function getCompositions() {
@@ -78,7 +103,8 @@ function getCompositions() {
             let itemID = item.dataset.id
             showCompositions(itemID)
             })
-        })    
+        })  
+
     })
 }
 
@@ -225,4 +251,10 @@ function makeTodaysDate() {
     newdate = month + " " + day + ", " + year ;
 
     document.getElementById('date').innerHTML = newdate;
+}
+
+function highlightGallery() {
+    const gallery = document.getElementById('gallery')
+    console.log(gallery)
+    gallery.classList.add("highlight");
 }

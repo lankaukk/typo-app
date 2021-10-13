@@ -1,7 +1,10 @@
 const endPoint = "http://localhost:3000/api/v1/compositions"
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("a");
+
     getCompositions()
+    console.log("b");
     
     const saveForm = document.getElementById('save-form')
     saveForm.addEventListener("submit", (e) => createFormHandler(e))
@@ -41,13 +44,18 @@ function postFetch(composition) {
     .then(composition => {
         const compositionData = composition.data
         let newComposition = new Composition(compositionData, compositionData.attributes)
-        document.querySelector('#gallery').innerHTML += newComposition.renderCompositionCard();  
 
-        const galleryItems = document.getElementsByClassName('gallery-items');
-    const galleryItemsArray = Array.prototype.slice.call(galleryItems);
+        // += clears the event listeners
+        // document.querySelector('#gallery').innerHTML += newComposition.renderCompositionCard();  
+        document.querySelector('#gallery').insertAdjacentHTML('beforeend',newComposition.renderCompositionCard());  
 
-    galleryItemsArray.forEach(item => {
-        item.addEventListener("click", () => {
+        // const galleryItems = document.getElementsByClassName('gallery-items');
+        // const galleryItemsArray = Array.prototype.slice.call(galleryItems);
+
+        const newItem = document.querySelectorAll(`[data-id="${newComposition.id}"]`)[0]
+        console.log(newItem)
+        newItem.addEventListener("click", () => {
+
             document.getElementById('char1').innerHTML = "";
             document.getElementById('char2').innerHTML = "";
             document.getElementById('char3').innerHTML = "";
@@ -61,10 +69,9 @@ function postFetch(composition) {
             document.getElementById('color-scheme').style.display = "none";
             document.getElementById('typeface').style.display = "none";
 
-            let itemID = item.dataset.id
+            let itemID = newItem.dataset.id
             showCompositions(itemID)
             })
-        }) 
     })
     
 
@@ -72,9 +79,12 @@ function postFetch(composition) {
 }
 
 function getCompositions() {
+    console.log("c");
     fetch(endPoint)
+
     .then(response => response.json())
     .then(compositions => {
+        console.log("d");
         compositions.data.forEach(composition => {
             // double check how your data is nested in the console so you can successfully access the attributes of each individual object
             let newComposition = new Composition(composition, composition.attributes)
@@ -87,6 +97,7 @@ function getCompositions() {
 
     galleryItemsArray.forEach(item => {
         item.addEventListener("click", () => {
+            // new function
             document.getElementById('char1').innerHTML = "";
             document.getElementById('char2').innerHTML = "";
             document.getElementById('char3').innerHTML = "";
@@ -106,6 +117,7 @@ function getCompositions() {
         })  
 
     })
+    console.log("e");
 }
 
 function showCompositions(itemID) {
@@ -173,6 +185,7 @@ function makeComposition() {
     document.getElementById('char7').innerHTML = "";
 
     document.getElementById('save-button').style.display = "block";
+    document.getElementById('download-button').style.display = "block";
     document.getElementById('artist').style.display = "block";
     document.getElementById('color-scheme').style.display = "block";
     document.getElementById('artist-signature').style.display = "none";
@@ -230,7 +243,7 @@ function makeCharacters() {
 }
 
 function makeTypeface() {
-    const possibleTypefaces = ['Helvetica', 'Courier','Courier Neue', 'Times', 'Times New Roman', 'Impact', 'Roboto', 'Arial', 'Georgia', 'Cambria', 'Palette Mosaic', 'Freckle Face', 'Grenze Gotisch', 'Limelight', 'Macondo Swash Caps', 'Modak', 'Nosifer', 'Plaster', 'Rammetto One', 'Slackey', 'Montserrat', 'Source Code Pro']
+    const possibleTypefaces = ['Helvetica', 'Courier','Courier Neue', 'Times', 'Times New Roman', 'Impact', 'Roboto', 'Arial', 'Georgia', 'Cambria', 'Palette Mosaic', 'Freckle Face', 'Grenze Gotisch', 'Limelight', 'Macondo Swash Caps', 'Modak', 'Plaster', 'Rammetto One', 'Slackey', 'Montserrat', 'Source Code Pro']
     const randomChoice = Math.floor(Math.random() * possibleTypefaces.length);
     const typeface = possibleTypefaces[randomChoice];
 

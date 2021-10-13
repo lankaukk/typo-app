@@ -25,9 +25,9 @@ body {
 }
 
 #logo {
-    font-family: 'Source Code Pro', Helvetica, sans-serif;
+    font-family: 'Rammetto One', Helvetica, sans-serif;
     letter-spacing: 10pt;
-    font-size: 60pt;
+    font-size: 48pt;
 }
 
 
@@ -41,7 +41,7 @@ body {
 
     height: 70vh;
     width: inherit;
-    border-radius: 20px;
+    border-radius: 5px;
 
     background-color: rgba(77, 76, 76, 0.637);
 
@@ -110,6 +110,11 @@ body {
 }
 
 #save-button {
+    display: none;
+    margin: auto;
+}
+
+#download-button {
     display: none;
     margin: auto;
 }

@@ -6,6 +6,10 @@ Welcome to the Typo App! This is a Single Page Application(SPA) for generating y
 
 Built with Ruby version '2.6.1', and Rails version '~> 6.1.4'
 
+## Demo 
+
+https://www.youtube.com/watch?v=5iSx4H-DS6Q&t=8s
+
 ## Installation
 
 To use this app, first fork and clone this repo.

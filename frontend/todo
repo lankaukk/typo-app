@@ -1,10 +1,11 @@
 TODO APP upgrade goals
 
-[] on saving a composition, highlight gallery
+[] only on saving a composition, highlight gallery
+[] dont allow saving twice
 [] gallery starts at top with most recent
 
 [] user authentication
     [] update artist name form to be current user
 
 [] download composition images  (html2canvas)
-[] random position oof characters
+[] random position of characters

@@ -243,7 +243,7 @@ function makeCharacters() {
 }
 
 function makeTypeface() {
-    const possibleTypefaces = ['Helvetica', 'Courier','Courier Neue', 'Times', 'Times New Roman', 'Impact', 'Roboto', 'Arial', 'Georgia', 'Cambria', 'Palette Mosaic', 'Freckle Face', 'Grenze Gotisch', 'Limelight', 'Macondo Swash Caps', 'Modak', 'Plaster', 'Rammetto One', 'Slackey', 'Montserrat', 'Source Code Pro']
+    const possibleTypefaces = ['Helvetica', 'Courier','Courier Neue', 'Times', 'Times New Roman', 'Impact', 'Roboto', 'Arial', 'Georgia', 'Cambria', 'Palette Mosaic', 'Freckle Face', 'Grenze Gotisch', 'Limelight', 'Macondo Swash Caps', 'Modak', 'Plaster', 'Rammetto One', 'Slackey', 'Montserrat', 'Source Code Pro', 'flegrei']
     const randomChoice = Math.floor(Math.random() * possibleTypefaces.length);
     const typeface = possibleTypefaces[randomChoice];
 

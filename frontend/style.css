@@ -6,7 +6,7 @@
 
 body {
     background: #5A5A5A;
-    font-family: 'Source Code Pro', Helvetica, sans-serif;
+    font-family:  Helvetica, sans-serif;
 }
 
 #left-side, #elements-panel {
@@ -25,7 +25,10 @@ body {
 }
 
 #logo {
-    font-family: 'Rammetto One', Helvetica, sans-serif;
+    font-family: flegrei, sans-serif;
+    font-weight: 100%;
+    font-style: normal;
+    /* font-family: 'Rammetto One', Helvetica, sans-serif; */
     letter-spacing: 10pt;
     font-size: 48pt;
 }

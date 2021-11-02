@@ -271,3 +271,16 @@ function highlightGallery() {
     console.log(gallery)
     gallery.classList.add("highlight");
 }
+
+function downloadComp() { 
+    const link = document.createElement('a');
+
+        link.innerHTML = 'download image';
+        link.addEventListener('click', function(ev) {
+        link.href = canvas.toDataURL();
+        link.download = "mycomposition.png";
+
+    }, false);
+    
+    document.body.appendChild(link);
+}

@@ -46,9 +46,9 @@ body {
     background-color: rgba(77, 76, 76, 0.637);
 
     border: 1px solid white;
-    -moz-box-shadow:    inset 0 0 10px #ffffff;
+    /* -moz-box-shadow:    inset 0 0 10px #ffffff;
     -webkit-box-shadow: inset 0 0 10px #ffffff;
-    box-shadow:         inset 0 0 10px #ffffff;
+    box-shadow:         inset 0 0 10px #ffffff; */
 }
 
 #canvas {
